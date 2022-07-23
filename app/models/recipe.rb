@@ -21,6 +21,7 @@ class Recipe < ApplicationRecord
   validates :descriptions, length: { maximum: 65_535, minimum: 0, message: I18n.t('.out_of_range_error') },
                            presence: true
 
+  # TODO: time should be a integer represent the the number of minutes
   validates :time, length: { maximum: 255, minimum: 0, message: I18n.t('.out_of_range_error') }, presence: true
 
   validates :difficulty, presence: true

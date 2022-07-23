@@ -69,5 +69,6 @@ class Api::RecipesController < Api::BaseController
 
     difficulty = params[:difficulty]
     @recipes = @recipes.where(difficulty: difficulty) if difficulty
+    @error_message = I18n.t('errors.messages.search_not_found') if @recipes.empty?
   end
 end
