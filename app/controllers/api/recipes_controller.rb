@@ -55,4 +55,19 @@ class Api::RecipesController < Api::BaseController
 
     @recipes = Recipe.all
   end
+
+  def search
+    @recipes = Recipe.all
+    title = params[:title]
+    @recipes = @recipes.where(title: title) if title
+
+    time_from = params[:time_from]
+    time_to = params[:time_to]
+    if time_from.present? and time_to.present?
+      @recipes = @recipes.where(time: time_from.to_i..time_to.to_i)
+    end
+
+    difficulty = params[:difficulty]
+    @recipes = @recipes.where(difficulty: difficulty) if difficulty
+  end
 end
