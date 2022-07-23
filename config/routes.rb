@@ -33,7 +33,8 @@ resources :users_sessions, only: [:create] do
  end
 
 resources :ingredients, only: [:index, :create, :show, :update, :destroy] do
- end
+end
+get '/ingredients/weight_converter' => 'ingredients#weight_converter'
 
 resources :categories, only: [:index, :create, :show, :update, :destroy] do
  end
