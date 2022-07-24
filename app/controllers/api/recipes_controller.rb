@@ -55,4 +55,26 @@ class Api::RecipesController < Api::BaseController
 
     @recipes = Recipe.all
   end
+
+  def search
+    @recipes = Recipe.all
+    title = search_params[:title]
+    @recipes = @recipes.where(title: title) if title
+
+    time_from = search_params[:time_from]
+    time_to = search_params[:time_to]
+    if time_from.present? and time_to.present?
+      @recipes = @recipes.where(time: time_from.to_i..time_to.to_i)
+    end
+
+    difficulty = search_params[:difficulty]
+    @recipes = @recipes.where(difficulty: difficulty) if difficulty
+    @error_message = I18n.t('errors.messages.search_not_found') if @recipes.empty?
+  end
+
+  private
+
+  def search_params
+    params.permit(:title, :time_from, :time_to, :difficulty)
+  end
 end
