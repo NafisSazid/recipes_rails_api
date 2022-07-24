@@ -25,7 +25,7 @@ module Api
         full_messages: resource&.errors&.full_messages,
         errors: resource&.errors,
         error_message: error.message,
-        backtrace: error.backtrace
+        backtrace: error.backtrace #only backtrace in development
       }
     end
 

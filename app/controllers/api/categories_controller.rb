@@ -2,6 +2,7 @@ class Api::CategoriesController < Api::BaseController
   # jitera-anchor-dont-touch: before_action_filter
 
   # jitera-anchor-dont-touch: actions
+  # TODO: Have to add Doorkeeper Authorization in all the apis where missing
   def destroy
     @category = Category.find_by(id: params[:id])
 
