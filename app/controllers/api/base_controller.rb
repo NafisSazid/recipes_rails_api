@@ -2,7 +2,7 @@ module Api
   class BaseController < ActionController::API
     include OauthTokensConcern
     include ActionController::Cookies
-    include Pundit::Authorization
+    include Pundit::Authorization #TODO: Pundit policies are not used
 
     # =======End include module======
 
