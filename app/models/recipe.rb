@@ -9,6 +9,8 @@ class Recipe < ApplicationRecord
 
   belongs_to :user
 
+  has_many :ratings, dependent: :destroy
+
   # jitera-anchor-dont-touch: enum
   enum difficulty: %w[easy normal challenging], _suffix: true
 
