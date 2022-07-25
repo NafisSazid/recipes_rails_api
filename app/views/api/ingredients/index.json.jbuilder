@@ -4,7 +4,6 @@ if @ingredients.present?
     json.created_at ingredient.created_at
     json.updated_at ingredient.updated_at
     json.unit ingredient.unit
-    json.unit ingredient.unit
     json.amount ingredient.amount
     json.recipe_id ingredient.recipe_id
   end

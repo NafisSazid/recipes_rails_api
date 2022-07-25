@@ -2,7 +2,7 @@ module Api
   class BaseController < ActionController::API
     include OauthTokensConcern
     include ActionController::Cookies
-    include Pundit
+    include Pundit::Authorization #TODO: Pundit policies are not used
 
     # =======End include module======
 
@@ -25,7 +25,7 @@ module Api
         full_messages: resource&.errors&.full_messages,
         errors: resource&.errors,
         error_message: error.message,
-        backtrace: error.backtrace
+        backtrace: error.backtrace #only backtrace in development
       }
     end
 

@@ -21,5 +21,5 @@ if @error_object.blank?
     json.user_id @recipe.user_id
   end
 else
-  json.error_object @error_object
+  json.error_object @error_object # TODO: Sometimes it is error message, sometimes it is error object, should have a common structure for error handling
 end

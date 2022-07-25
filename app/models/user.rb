@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :ingredients, through: :recipes
 
+  has_many :ratings, dependent: :destroy
+
   # jitera-anchor-dont-touch: enum
 
   # jitera-anchor-dont-touch: file
@@ -26,6 +28,11 @@ class User < ApplicationRecord
     [:recipes]
   end
 
+  def self.authenticate(email, password)
+    user = User.find_for_authentication(email: email)
+    user&.valid_password?(password) ? user : nil
+  end
+
   # jitera-anchor-dont-touch: reset_password
   def generate_reset_password_token
     raw, enc = Devise.token_generator.generate(self.class, :reset_password_token)
@@ -38,7 +45,7 @@ class User < ApplicationRecord
 
   class << self
     def timeout_in
-      0.hours
+      1.hours
     end
 
     def password_length
@@ -46,7 +53,7 @@ class User < ApplicationRecord
     end
 
     def reset_password_within
-      0.hours
+      1.hours
     end
   end
 end

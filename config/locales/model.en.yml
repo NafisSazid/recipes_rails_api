@@ -33,6 +33,13 @@ en:
         difficulty: Difficulty
         category_id: Category ID
         user_id: User ID
+      rating:
+        id: ID
+        created_at: Created at
+        updated_at: Updated at
+        score: Score
+        user_id: User ID
+        recipe_id: Recipe ID
       category:
         id: ID
         created_at: Created at
@@ -63,3 +70,4 @@ en:
       datetime_type: Must be a valid date and time
       in_future: Must be larger than today
       in_past: Must be smaller than today
+      search_not_found: Search not Found
