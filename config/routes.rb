@@ -43,6 +43,9 @@ resources :ratings, only: [:index, :create, :show, :update, :destroy] do
 end
 
 resources :recipes, only: [:index, :create, :show, :update, :destroy] do
+  member do
+    get :ratings
+  end
   collection do
     get :search
   end

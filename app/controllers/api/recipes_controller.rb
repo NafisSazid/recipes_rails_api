@@ -56,6 +56,11 @@ class Api::RecipesController < Api::BaseController
     @recipes = Recipe.all
   end
 
+  def ratings
+    @ratings = Rating.where(recipe_id: params[:id])
+    @error_message = true if @ratings.blank?
+  end
+
   def search
     @recipes = Recipe.all
     title = search_params[:title]
