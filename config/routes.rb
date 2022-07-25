@@ -34,7 +34,7 @@ resources :users_sessions, only: [:create] do
 
 resources :ingredients, only: [:index, :create, :show, :update, :destroy] do
 end
-post 'ingredients/weight_converter', to: 'ingredients#weight_converter', as: :weight_converter
+post 'ingredients/weight_converter' => 'ingredients#weight_converter'
 
 resources :categories, only: [:index, :create, :show, :update, :destroy] do
 end
