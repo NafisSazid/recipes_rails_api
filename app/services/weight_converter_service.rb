@@ -24,4 +24,3 @@ class WeightConverterService
     converter_params.merge(converted_amount: conversion_amount)
   end
 end
-
